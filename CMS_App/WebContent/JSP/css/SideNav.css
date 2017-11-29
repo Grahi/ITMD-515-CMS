@@ -1,0 +1,71 @@
+@CHARSET "ISO-8859-1";
+body {
+    font-family: "Lato", sans-serif;
+    
+}
+body {
+  background-color: #dee6ed;
+  font-family:'helvetica neue', helvetica, arial, sans-serif;
+  font-weight:300;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #606060;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+}
+
+.sidenav a {
+	top: 100px;
+    padding: 15px 8px 15px 8px;
+    display:block;
+	color:#fff;
+	font-family:'helvetica neue', helvetica, arial, sans-serif;
+	font-weight:300;
+	text-decoration:none;   
+    transition: 0.3s;
+    border-bottom:1px solid #333;    
+}
+
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    background:#111;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 25px;
+    margin-left: 50px;
+    border-bottom:none;
+}
+
+.sidenav .course{
+	position: absolute;
+    top: 0;
+	height: 50px;
+	border: 3px solid #f1f1f1
+	background-color: #606060;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 30px;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+
+}

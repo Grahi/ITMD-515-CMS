@@ -1,5 +1,9 @@
 package com.dao;
 
-public class LoginDao {
+import com.bean.Login;
 
+public interface LoginDao {
+	
+	public Login authenticateUser(Login loginBean);
+	
 }

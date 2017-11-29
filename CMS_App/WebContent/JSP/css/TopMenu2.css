@@ -1,0 +1,184 @@
+@CHARSET "ISO-8859-1";
+
+* * {
+	margin: 0;
+	padding: 0;
+}
+
+h1, p {
+	font-family:'helvetica neue', helvetica, arial, sans-serif;    
+	color: #222;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#topnav {
+	list-style: none;
+	height: 30px;
+	background: #606060;
+	border: 1px solid #000;
+	width: 100%;
+	margin: 10px auto;
+	top:0;
+}
+
+#topnav li {
+	/* position: relative; */
+	float: left;
+	width: 100px;
+	background: #606060;
+	text-align: center;	
+	
+}
+
+#topnav li.last {
+	border-right: 0;
+	float: right;
+}
+
+#topnav li:hover {
+	background: #111;
+	min-height: 0;
+	cursor: pointer;
+}
+
+#topnav a {
+	display: block;
+	color: #fff;   
+	font-family:'helvetica neue', helvetica, arial, sans-serif;
+	font-size: 15px;
+	font-weight:300;
+	text-decoration:none;
+	vertical-align:middle;
+	/* line-height: 20px;  */
+	
+	 height: 25px; 
+}
+
+
+
+#topnav .tl {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-right: 12px dashed transparent;
+	border-top: 12px solid #000;
+}
+
+#topnav .tr {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-left: 12px dashed transparent;
+	border-top: 12px solid #000;
+}
+
+#topnav .bl {
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	border-right: 12px dashed transparent;
+	border-bottom: 12px solid #000;
+}
+
+#topnav .br {
+	position: absolute;
+	bottom: -1px;
+	right: 0;
+	border-left: 12px dashed transparent;
+	border-bottom: 12px solid #000;
+}
+
+/* ------------ Drop Down ----------- */
+#topnav ul {
+	position: absolute;
+	left: -999em;
+	top: 32px;
+	list-style: none;
+	border-top: 1px solid #000;
+}
+
+#topnav ul li {
+	border: 1px solid #000;
+	border-top: 0;
+}
+
+#topnav li:hover ul {
+	left: -1px;
+	top: auto;
+}
+/* 2nd & 3rd Level Drop */
+#topnav li:hover ul ul, #nav li:hover ul ul ul {
+	left: -999em;
+}
+
+#topnav ul li:hover ul, #nav ul ul li:hover ul {
+	left: 192px;
+	top: -1px;
+}
+/* 4th & 5th Level Drop */
+#topnav li:hover ul ul ul ul, #nav li:hover ul ul ul ul ul {
+	left: -999em;
+}
+
+#topnav ul ul ul li:hover ul, #nav ul ul ul ul li:hover ul {
+	left: -194px;
+	top: -1px;
+}
+/* 6th & 7th Level Drop */
+#topnav li:hover ul ul ul ul ul ul, #nav li:hover ul ul ul ul ul ul ul {
+	left: -999em;
+}
+
+#topnav ul ul ul ul ul li:hover ul, #nav ul ul ul ul ul ul li:hover ul {
+	left: -194px;
+	top: -133px;
+	width: 194px;
+}
+/* 8th level Drop */
+#topnav li:hover ul ul ul ul ul ul ul ul {
+	left: -999em;
+}
+
+#topnav ul ul ul ul ul ul ul li:hover ul {
+	left: 192px;
+	top: -133px;
+}
+/* 9th level Drop */
+#topnav li:hover ul ul ul ul ul ul ul ul ul {
+	left: -999em;
+}
+
+#topnav ul ul ul ul ul ul ul ul li:hover ul {
+	left: 193px;
+	top: -34px;
+}
+
+#topnav ul ul ul ul ul ul ul ul li:hover ul li {
+	background: red;
+	border-color: red;
+	width: 190px;
+	font-size: 140%;
+}
+
+#last {
+	margin: -1px 0 0;
+}
+
+#left {
+	position: absolute;
+	left: -194px;
+	top: 0;
+	height: 32px;
+	width: 194px;
+	background: red;
+}
+
+#right {
+	position: absolute;
+	left: 190px;
+	top: 0;
+	height: 32px;
+	width: 194px;
+	background: red;
+}
