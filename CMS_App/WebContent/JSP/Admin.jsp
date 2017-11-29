@@ -60,7 +60,7 @@
 							<td class="text-left">${prof.profEmail} </td>	
 							<td class="text-left">
 							<form action="">								
-							    <button class="button"><i class="fa fa-pencil-square-o"></i></button>
+							    <button class="button" ><i class="fa fa-pencil-square-o"></i></button>
 								<button class="button"><i class="fa fa-trash-o"></i></button>
 							</form></td>			
 							</tr>
