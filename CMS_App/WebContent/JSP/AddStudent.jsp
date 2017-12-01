@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,31 +12,33 @@
 
 <link href="<%=request.getContextPath()%>/JSP/css/AddForm.css"
 	rel="stylesheet" type="text/css">
-	
+
 <title>Add Student</title>
 </head>
 <body>
- <form class="form-style-9">
-<ul>
-<li>
-    <input type="text" name="student_first_name" class="field-style field-split align-left" placeholder="FirstName" />
-    <input type="text" name="student_last_name" class="field-style field-split align-right" placeholder="LastName" />
+	<form class="form-style-9" action="<%=request.getContextPath()%>/AdminServlet">
+	<input type="hidden" name="command" value="ADDSTUDENT">
+		<ul>
+			<li>
+				<input type="text" name="student_first_name"  	class="field-style field-split align-left" placeholder="FirstName" />
+				<input type="text" name="student_last_name" 	class="field-style field-split align-right" placeholder="LastName" />
+			</li>
+			<li>
+				<input type="text" name="student_contact" 	class="field-style field-split align-left" placeholder="Contact" />
+				<input type="text" name="student_email" 		class="field-style field-split align-right" placeholder="Email" />
+			</li>
+			<li>
+				<input type="submit" value="Add" /> 				
+			</li>
+			<li>
+				 <p>
+				 	<a href="<%=request.getContextPath()%>/AdminServlet">Back to Admin Page.</a>
+				 </p>
+			</li>
+		</ul>
+	</form>
 
-</li>
-<li>
-    <input type="text" name="student_contact" class="field-style field-split align-left" placeholder="Contact" />
-    <input type="text" name="student_email" class="field-style field-split align-right" placeholder="Email" />
-</li>
-<!-- <li>
-<input type="text" name="student_password" class="field-style field-full align-none" placeholder="Password" />
-</li> -->
-<li>
-<input type="submit" value="Add" />
-</li>
-</ul>
-</form>
 
-  
 
-  </body>
+</body>
 </html>

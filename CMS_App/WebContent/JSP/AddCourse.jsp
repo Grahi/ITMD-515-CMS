@@ -15,7 +15,8 @@
 <title>Add Course</title>
 </head>
 <body>
- <form class="form-style-9">
+ <form class="form-style-9" action="<%=request.getContextPath()%>/AdminServlet" >
+ 	<input type="hidden" name="command" value="ADDCOURSE">
 <ul>
 <li>
     <input type="text" name="course_code" class="field-style field-split align-left" placeholder="CourseCode" />
@@ -23,14 +24,18 @@
 
 </li>
 <li>
-    <input type="text" name="location" class="field-style field-split align-left" placeholder="CourseLocation" />
-    
+    <input type="text" name="location" class="field-style field-split align-left" placeholder="CourseLocation" />    
+</li>
+<!-- <li>
+	<textarea name="syllabus" class="field-style" placeholder="Message"></textarea>
+</li> -->
+<li>
+	<input type="submit" value="Add" />
 </li>
 <li>
-<textarea name="syllabus" class="field-style" placeholder="Message"></textarea>
-</li>
-<li>
-<input type="submit" value="Add" />
+	 <p>
+	 	<a href="<%=request.getContextPath()%>/AdminServlet">Back to Admin Page.</a>
+	 </p>
 </li>
 </ul>
 </form>

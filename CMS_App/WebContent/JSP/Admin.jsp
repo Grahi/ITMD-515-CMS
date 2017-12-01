@@ -24,8 +24,7 @@
 
 <ul id="topnav">
 					
-			<li style="float: right"><a
-				href="<%=request.getContextPath()%>/LogoutServlet">Logout 
+			<li style="float: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout 
 				<i class="material-icons">login</i></a></li>
 		</ul>
 		<div class="w3-container w3-card-4" style="font-size: 15px">
@@ -121,7 +120,7 @@
 					<tr>
 						<th>CourseCode</th>
 						<th>CourseName</th>
-						<th>Syllabus</th>
+						<!-- <th>Syllabus</th> -->
 						<th>Location</th>
 						<th>Functions</th>
 					</tr>
@@ -132,7 +131,7 @@
 						<tr>					
 							<td class="text-left">${course.courseCode} </td>
 							<td class="text-left">${course.courseName} </td>
-							<td class="text-left">${course.syllabus} </td>
+							<%-- <td class="text-left">${course.syllabus} </td> --%>
 							<td class="text-left">${course.location} </td>	
 							<td class="text-left">
 							<form action="">								

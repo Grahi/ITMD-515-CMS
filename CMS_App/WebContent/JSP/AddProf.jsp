@@ -10,32 +10,35 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
-<link href="<%=request.getContextPath()%>/JSP/css/AddForm.css" 	rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/JSP/css/AddForm.css"
+	rel="stylesheet" type="text/css">
 	
 <title>Add Professor</title>
 </head>
 <body>
- <form class="form-style-9">
+ <form class="form-style-9" action="<%=request.getContextPath()%>/AdminServlet" >
+	<input type="hidden" name="command" value="ADDPROFESSOR">
 <ul>
 <li>
     <input type="text" name="professor_first_name" class="field-style field-split align-left" placeholder="FirstName" />
     <input type="text" name="professor_last_name" class="field-style field-split align-right" placeholder="LastName" />
-
 </li>
 <li>
     <input type="text" name="professor_contact" class="field-style field-split align-left" placeholder="Contact" />
     <input type="text" name="professor_email" class="field-style field-split align-right" placeholder="Email" />
 </li>
-<!-- <li>
-<input type="text" name="professor_password" class="field-style field-full align-none" placeholder="Password" />
-</li> -->
 <li>
-<input type="submit" value="Add" />
+	<input type="submit" value="Add" />	
+</li>
+<li>
+	 <p>
+	 	<a href="<%=request.getContextPath()%>/AdminServlet">Back to Admin Page.</a>
+	 </p>
 </li>
 </ul>
 </form>
 
-  
+ 
 
   </body>
 </html>

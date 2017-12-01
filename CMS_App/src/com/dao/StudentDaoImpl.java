@@ -65,7 +65,7 @@ public class StudentDaoImpl implements StudentDao {
 
 			con = DBConnection.createConnection();
 			query = "INSERT INTO `cms`.`student`"
-					+"(`student_first_name` "
+					+"(`student_first_name`, "
 					+"`student_last_name`, "
 					+"`student_contact`, "
 					+"`student_email`) "

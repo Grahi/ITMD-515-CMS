@@ -11,8 +11,18 @@ public class Student {
 	String studentContact;
 	String studentEmail;
 	List<Course> course;
-	Date dateCreated;
+	Date dateCreated;	
 	
+	public Student() {
+		
+	}
+
+	public Student(String studentFirstName, String studentLastName, String studentContact, String studentEmail) {
+		this.studentFirstName = studentFirstName;
+		this.studentLastName = studentLastName;
+		this.studentContact = studentContact;
+		this.studentEmail = studentEmail;
+	}
 	
 	public int getStudentId() {
 		return studentId;

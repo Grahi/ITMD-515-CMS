@@ -31,8 +31,9 @@ public class ProfessorDaoImpl implements ProfessorDao {
 		try {
 
 			con = DBConnection.createConnection();
+			
 			query = "INSERT INTO `cms`.`professor`"
-					+"(`professor_first_name` "
+					+"(`professor_first_name` ,"
 					+"`professor_last_name`, "
 					+"`professor_contact`, "
 					+"`professor_email`) "
@@ -43,10 +44,16 @@ public class ProfessorDaoImpl implements ProfessorDao {
 					+"?);";
 
 			statement = con.prepareStatement(query);
+			
+		
+			
 			statement.setString(1,professor.getProfFirstName());
 			statement.setString(2,professor.getProfLastName());
 			statement.setString(3,professor.getProfContact());
-			statement.setString(4,professor.getProfEmail());					
+			statement.setString(4,professor.getProfEmail());	
+			
+			System.out.println(statement.toString());
+			
 			statement.executeUpdate();
 			
 		} catch (SQLException e) {

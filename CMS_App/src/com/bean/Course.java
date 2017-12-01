@@ -14,8 +14,18 @@ public class Course {
 	List<Resource> resourceList;
 	List<Assignment> assignmentList;
 	List<TA> taList;
-	List<Schedule> scheduleList;
+	List<Schedule> scheduleList;	
 	
+	public Course() {
+		
+	}	
+	
+	public Course(String courseCode, String courseName, String location) {		
+		this.courseCode = courseCode;
+		this.courseName = courseName;
+		this.location = location;
+	}
+
 	public int getCourseId() {
 		return courseId;
 	}

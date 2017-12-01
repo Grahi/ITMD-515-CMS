@@ -12,7 +12,18 @@ public class Professor {
 	String profEmail;
 	List<Course> course;
 	Date dateCreated;
+		
+	public Professor(String profFirstName, String profLastName, String profContact, String profEmail) {		
+		this.profFirstName = profFirstName;
+		this.profLastName = profLastName;
+		this.profContact = profContact;
+		this.profEmail = profEmail;
+	}
 	
+	public Professor() {
+		
+	}
+
 	public int getProfId() {
 		return profId;
 	}

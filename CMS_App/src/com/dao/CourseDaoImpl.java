@@ -177,7 +177,37 @@ public class CourseDaoImpl implements CourseDao{
 
 	@Override
 	public void addCourse(Course course) {
-		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		String query = "";
+		
+		try {
+
+			con = DBConnection.createConnection();
+			
+			query = "INSERT INTO `cms`.`course`"
+					+"(`course_code` ,"
+					+"`course_name`, "
+					+"`location`) "
+					+"VALUES "
+					+"(?, "
+					+"?, "					
+					+"?);";
+
+			statement = con.prepareStatement(query);
+							
+			statement.setString(1,course.getCourseCode());
+			statement.setString(2,course.getCourseName());
+			statement.setString(3,course.getLocation());
+		
+			System.out.println(statement.toString());
+			
+			statement.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
