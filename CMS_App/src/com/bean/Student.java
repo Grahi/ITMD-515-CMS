@@ -24,6 +24,14 @@ public class Student {
 		this.studentEmail = studentEmail;
 	}
 	
+	public Student(int studentId,String studentFirstName, String studentLastName, String studentContact, String studentEmail) {
+		this.studentId = studentId;
+		this.studentFirstName = studentFirstName;
+		this.studentLastName = studentLastName;
+		this.studentContact = studentContact;
+		this.studentEmail = studentEmail;
+	}
+	
 	public int getStudentId() {
 		return studentId;
 	}

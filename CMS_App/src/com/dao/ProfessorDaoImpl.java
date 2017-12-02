@@ -80,7 +80,7 @@ public class ProfessorDaoImpl implements ProfessorDao {
 			statement.setInt(1, professorId);			
 			resultSet = statement.executeQuery();
 
-			while (resultSet.next()) {
+			if (resultSet.next()) {
 				prof.setProfId(resultSet.getInt("professor_id"));
 				prof.setProfFirstName(resultSet.getString("professor_first_name"));
 				prof.setProfLastName(resultSet.getString("professor_last_name"));

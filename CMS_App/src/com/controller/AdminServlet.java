@@ -57,12 +57,36 @@ public class AdminServlet extends HttpServlet {
 			addProfessor(request,response);
 			break;
 			
+		case "LOADPROFESSOR":
+			loadProfessor(request,response);
+			break;
+			
+		case "UPDATEPROFESSOR":
+			updateProfessor(request,response);
+			break;
+			
 		case "ADDSTUDENT":
 			addStudent(request,response);		
 			break;
 		
+		case "LOADSTUDENT":
+			loadStudent(request,response);
+			break;
+		
+		case "UPDATESTUDENT":
+			updateStudent(request,response);
+			break;
+			
 		case "ADDCOURSE":
 			addCourse(request,response);
+			break;
+			
+		case "LOADCOURSE":
+			loadCourse(request,response);
+			break;
+			
+		case "UPDATECOURSE":
+			updateCourse(request,response);
 			break;
 			
 		default:
@@ -72,6 +96,128 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 	
+	private void updateCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		//read the course info from the form data
+		String theCourseIdStr = request.getParameter("courseId");
+		int courseId = Integer.parseInt(theCourseIdStr);
+		String courseCode = request.getParameter("course_code");
+		String courseName = request.getParameter("course_name");
+		String location = request.getParameter("location");
+		
+		//create new student object
+		Course course = new Course(courseId,courseCode,courseName,location);
+		
+		//perform update on database
+		CourseDao courseDao = new CourseDaoImpl();
+		courseDao.updateCourse(course);
+		
+		//send them back to the refresh admin page
+		refreshAdminPage(request, response);
+		
+	}
+
+	private void updateStudent(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+		//read the student info from the form data
+		String theStudIdStr = request.getParameter("studentId");
+		int studentId = Integer.parseInt(theStudIdStr);
+		String firstName = request.getParameter("student_first_name");
+		String lastName = request.getParameter("student_last_name");
+		String contact = request.getParameter("student_contact");
+		String email = request.getParameter("student_email");
+		
+		//create new student object
+		Student stud = new Student(studentId,firstName,lastName,contact,email);
+		
+		//perform update on database
+		StudentDao studDao = new StudentDaoImpl();
+		studDao.updateStudent(stud);
+		
+		//send them back to the refresh admin page
+		refreshAdminPage(request, response);
+	}
+
+	private void updateProfessor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		//read the professor info from the form data
+		String theProfIdStr = request.getParameter("profId");
+		int profId = Integer.parseInt(theProfIdStr);
+		String firstName = request.getParameter("professor_first_name");
+		String lastName = request.getParameter("professor_last_name");
+		String contact = request.getParameter("professor_contact");
+		String email = request.getParameter("professor_email");
+		
+		//create new professor object
+		Professor prof = new Professor(profId,firstName,lastName,contact,email);
+		
+		//perform update on database
+		ProfessorDao profDao = new ProfessorDaoImpl();
+		profDao.updateProfessor(prof);
+		
+		//send them back to the refresh admin page
+		refreshAdminPage(request, response);
+		
+	}
+
+	/*
+	 * 
+	 */
+	private void loadCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//read professor id from form data 
+		String theCourseIdStr = request.getParameter("courseId");
+		int courseId = Integer.parseInt(theCourseIdStr);
+		
+		//get professor from DB
+		CourseDao courseDao = new CourseDaoImpl();
+		Course course  = courseDao.getCourse(courseId);
+				
+		//place professor in request attribute
+		request.setAttribute("course", course);
+		
+		//send to jsp page - UpdateProfessor.jsp
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/UpdateCourse.jsp");
+		rd.forward(request, response);				
+	}
+
+	/*
+	 * 
+	 */
+	private void loadStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			//read professor id from form data 
+			String theStudIdStr = request.getParameter("studentId");
+			int studentId = Integer.parseInt(theStudIdStr);
+			
+			//get professor from DB
+			StudentDao profDao = new StudentDaoImpl();
+			Student stud  = profDao.getStudent(studentId);
+					
+			//place professor in request attribute
+			request.setAttribute("stud", stud);
+			
+			//send to jsp page - UpdateProfessor.jsp
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/UpdateStudent.jsp");
+			rd.forward(request, response);				
+		
+	}
+
+	/*
+	 * 
+	 */
+	private void loadProfessor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//read professor id from form data 
+		String theProfIdStr = request.getParameter("profId");
+		int profId = Integer.parseInt(theProfIdStr);
+		
+		//get professor from DB
+		ProfessorDao profDao = new ProfessorDaoImpl();
+		Professor prof  = profDao.getProfessor(profId);
+				
+		//place professor in request attribute
+		request.setAttribute("prof", prof);
+		
+		//send to jsp page - UpdateProfessor.jsp
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/UpdateProf.jsp");
+		rd.forward(request, response);				
+	}
+
 	/*
 	 * 
 	 */
@@ -135,8 +281,6 @@ public class AdminServlet extends HttpServlet {
 		refreshAdminPage(request, response);
 	}
 
-	
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -180,8 +324,6 @@ public class AdminServlet extends HttpServlet {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/Admin.jsp");
 			rd.forward(request, response);	
 		
-	}
-	
-	 
+	} 
 
 }

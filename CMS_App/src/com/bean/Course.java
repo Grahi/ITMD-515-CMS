@@ -20,6 +20,14 @@ public class Course {
 		
 	}	
 	
+	public Course(int courseId,String courseCode, String courseName, String location) {		
+		this.courseId = courseId;
+		this.courseCode = courseCode;
+		this.courseName = courseName;
+		this.location = location;
+	}
+
+	
 	public Course(String courseCode, String courseName, String location) {		
 		this.courseCode = courseCode;
 		this.courseName = courseName;

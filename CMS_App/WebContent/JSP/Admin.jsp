@@ -7,16 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="<%=request.getContextPath()%>/JSP/css/TopMenu2.css"
-	rel="stylesheet" type="text/css">
-
-<link href="<%=request.getContextPath()%>/JSP/css/Accordian.css"
-	rel="stylesheet" type="text/css">
-<link href="<%=request.getContextPath()%>/JSP/css/AdminPageStyle.css"
-	rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/JSP/css/TopMenu2.css"	rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/JSP/css/Accordian.css" 	rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/JSP/css/AdminPageStyle.css" 	rel="stylesheet" type="text/css">
 	
 <title>Admin Page</title>
 </head>
@@ -24,20 +19,19 @@
 
 <ul id="topnav">
 					
-			<li style="float: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout 
-				<i class="material-icons">login</i></a></li>
-		</ul>
-		<div class="w3-container w3-card-4" style="font-size: 15px">
-			<h5 style="float: right; font-size: 15px">
-				<%=session.getAttribute("userName")%></h5>
-		</div>
+		<li style="float: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout 
+		<i class="material-icons">login</i></a>
+		</li>
+</ul>
+<div class="w3-container w3-card-4" style="font-size: 15px">
+	<h5 style="float: right; font-size: 15px"><%=session.getAttribute("userName")%></h5>
+</div>
 	<button class="accordion" style="align:center">Professor</button>
 	<div class="panel">
 	
 		<div id="page_container">
 
-			<button type="button" class="button" onclick="AddProf()" id="add_professor">Add
-				Professor</button>
+			<button type="button" class="button"  onclick="AddProf()" id="add_professor">Add Professor</button>
 
 			<table class="datatable" id="table_companies">
 				<thead>
@@ -51,7 +45,10 @@
 				</thead>
 				<tbody>				
 					<c:forEach var="prof" items="${profList}">
-					<%-- <c:param name="courseId" value="${prof.profId}"></c:param> --%>
+					<c:url var="templink" value="AdminServlet">
+					 	<c:param name="profId" value="${prof.profId}"/> 
+					 	<c:param name="command" value="LOADPROFESSOR"/> 
+					 </c:url>
 						<tr>					
 							<td class="text-left">${prof.profFirstName} </td>
 							<td class="text-left">${prof.profLastName} </td>
@@ -59,14 +56,13 @@
 							<td class="text-left">${prof.profEmail} </td>	
 							<td class="text-left">
 							<form action="">								
-							    <button class="button" ><i class="fa fa-pencil-square-o"></i></button>
-								<button class="button"><i class="fa fa-trash-o"></i></button>
+							    <a href="${templink }" title="Click to update professor details."><i class="fa fa-pencil-square-o"></i></a>
+								 <a href="${templink }" title="Click to delete professor."><i class="fa fa-trash-o"></i></a>
 							</form></td>			
 							</tr>
 					</c:forEach>	
 				</tbody>
 			</table>
-
 		</div>
 </div>
 	
@@ -89,7 +85,10 @@
 				<tbody>
 			
 					<c:forEach var="stud" items="${studList}">
-					<%-- <c:param name="courseId" value="${prof.profId}"></c:param> --%>
+						<c:url var="templink" value="AdminServlet">
+						 	<c:param name="studentId" value="${stud.studentId}"/> 
+						 	<c:param name="command" value="LOADSTUDENT"/> 
+					 	</c:url>					 
 						<tr>					
 							<td class="text-left">${stud.studentFirstName} </td>
 							<td class="text-left">${stud.studentLastName} </td>
@@ -97,10 +96,10 @@
 							<td class="text-left">${stud.studentEmail} </td>	
 							<td class="text-left">
 							<form action="">								
-							    <button class="button"><i class="fa fa-pencil-square-o"></i></button>
-								<button class="button"><i class="fa fa-trash-o"></i></button>
+							    <a href="${templink }" title="Click to update student details."><i class="fa fa-pencil-square-o"></i></a>
+								<a href="${templink }" title="Click to delete student."><i class="fa fa-trash-o"></i></a>
 							</form></td>			
-							</tr>
+						</tr>
 					</c:forEach>	
 				</tbody>
 			</table>
@@ -119,24 +118,25 @@
 				<thead>
 					<tr>
 						<th>CourseCode</th>
-						<th>CourseName</th>
-						<!-- <th>Syllabus</th> -->
+						<th>CourseName</th>						
 						<th>Location</th>
 						<th>Functions</th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach var="course" items="${courseList}">
-					<%-- <c:param name="courseId" value="${prof.profId}"></c:param> --%>
+						<c:url var="templink" value="AdminServlet">
+						 	 <c:param name="courseId" value="${course.courseId}"/> 
+						 	<c:param name="command" value="LOADCOURSE"/> 
+					 	</c:url>						
 						<tr>					
 							<td class="text-left">${course.courseCode} </td>
-							<td class="text-left">${course.courseName} </td>
-							<%-- <td class="text-left">${course.syllabus} </td> --%>
+							<td class="text-left">${course.courseName} </td>							
 							<td class="text-left">${course.location} </td>	
 							<td class="text-left">
 							<form action="">								
-							    <button class="button"><i class="fa fa-pencil-square-o"></i></button>
-								<button class="button"><i class="fa fa-trash-o"></i></button>
+								<a href="${templink }" title="Click to update course details."><i class="fa fa-pencil-square-o"></i></a>
+								<a href="${templink }" title="Click to delete course."><i class="fa fa-trash-o"></i></a>
 							</form></td>			
 							</tr>
 					</c:forEach>	

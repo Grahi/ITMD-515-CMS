@@ -12,7 +12,15 @@ public class Professor {
 	String profEmail;
 	List<Course> course;
 	Date dateCreated;
-		
+	
+	public Professor(int profId,String profFirstName, String profLastName, String profContact, String profEmail) {		
+		this.profId = profId;
+		this.profFirstName = profFirstName;
+		this.profLastName = profLastName;
+		this.profContact = profContact;
+		this.profEmail = profEmail;
+	}
+	
 	public Professor(String profFirstName, String profLastName, String profContact, String profEmail) {		
 		this.profFirstName = profFirstName;
 		this.profLastName = profLastName;

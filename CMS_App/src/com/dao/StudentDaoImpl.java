@@ -14,12 +14,9 @@ import com.util.DBConnection;
 /*
  * 
  */
-
 public class StudentDaoImpl implements StudentDao {
 
-	public StudentDaoImpl() {
-
-	}
+	public StudentDaoImpl() { }
 
 	@Override
 	public Student getStudent(int studentId) {
@@ -109,7 +106,9 @@ public class StudentDaoImpl implements StudentDao {
 			statement.setString(2,Student.getStudentLastName());
 			statement.setString(3,Student.getStudentContact());
 			statement.setString(4,Student.getStudentEmail());
-			statement.setInt(5, Student.getStudentId());			
+			statement.setInt(5, Student.getStudentId());		
+			
+			System.out.println(statement.toString());
 			statement.executeUpdate();
 			
 		} catch (SQLException e) {
