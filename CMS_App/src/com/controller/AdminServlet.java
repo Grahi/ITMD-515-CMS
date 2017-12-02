@@ -65,6 +65,10 @@ public class AdminServlet extends HttpServlet {
 			updateProfessor(request,response);
 			break;
 			
+		case "DELETEPROFESSOR":
+			deleteProfessor(request,response);
+			break;
+			
 		case "ADDSTUDENT":
 			addStudent(request,response);		
 			break;
@@ -76,6 +80,11 @@ public class AdminServlet extends HttpServlet {
 		case "UPDATESTUDENT":
 			updateStudent(request,response);
 			break;
+		
+		case "DELETESTUDENT":
+			deleteStudent(request,response);
+			break;
+			
 			
 		case "ADDCOURSE":
 			addCourse(request,response);
@@ -89,6 +98,10 @@ public class AdminServlet extends HttpServlet {
 			updateCourse(request,response);
 			break;
 			
+		case "DELETECOURSE":
+			deleteCourse(request,response);
+			break;			
+			
 		default:
 			refreshAdminPage(request, response);
 			break;
@@ -96,6 +109,50 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 	
+	/*
+	 * 
+	 */
+	private void deleteCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		//read the professor info from the form data
+		String theCourseIdStr = request.getParameter("courseId");
+		int courseId = Integer.parseInt(theCourseIdStr);
+		
+		//call method to delete the professor
+		CourseDao courseDao = new CourseDaoImpl();
+		courseDao.deleteCourse(courseId);
+		
+		//Refresh admin page
+		refreshAdminPage(request, response);	
+		
+	}
+
+	private void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		//read the professor info from the form data
+		String theStudIdStr = request.getParameter("studentId");
+		int studentId = Integer.parseInt(theStudIdStr);
+		
+		//call method to delete the professor
+		StudentDao studDao = new StudentDaoImpl();
+		studDao.deleteStudent(studentId);
+		
+		//Refresh admin page
+		refreshAdminPage(request, response);		
+	}
+
+	private void deleteProfessor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//read the professor info from the form data
+		String theProfIdStr = request.getParameter("profId");
+		int profId = Integer.parseInt(theProfIdStr);
+		
+		//call method to delete the professor
+		ProfessorDao profDao = new ProfessorDaoImpl();
+		profDao.deleteProfessor(profId);
+		
+		//Refresh admin page
+		refreshAdminPage(request, response);		
+		
+	}
+
 	private void updateCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//read the course info from the form data
 		String theCourseIdStr = request.getParameter("courseId");

@@ -43,9 +43,7 @@ public class ProfessorDaoImpl implements ProfessorDao {
 					+"?, "
 					+"?);";
 
-			statement = con.prepareStatement(query);
-			
-		
+			statement = con.prepareStatement(query);			
 			
 			statement.setString(1,professor.getProfFirstName());
 			statement.setString(2,professor.getProfLastName());
@@ -170,21 +168,36 @@ public class ProfessorDaoImpl implements ProfessorDao {
 
 			con = DBConnection.createConnection();
 			
-			//first delete the courses taken by the student and then the student.
-			query = "DELETE FROM professor_course "
+			//first delete the user of the professor.
+			query = "DELETE FROM `cms`.`users` WHERE role = \"Professor\""
+						+"AND roleId = ?";
+
+			statement = con.prepareStatement(query);
+			statement.setInt(1, professorId);		
+			statement.executeUpdate();
+			
+			System.out.println("Deleted from the Users table.");
+			
+			//first delete the courses taken by the professor and then the professor.
+			query = "DELETE FROM `cms`.`professor_course` "
 						+"WHERE professor_id = ?";
 
 			statement = con.prepareStatement(query);
 			statement.setInt(1, professorId);		
 			statement.executeUpdate();
 			
-			//delete the student
-			query = "DELETE FROM professor "
+			System.out.println("Deleted from the Professor_Course table.");
+			
+			//delete the professor
+			query = "DELETE FROM `cms`.`professor` "
 					+"WHERE professor_id = ?";
 
 			statement = con.prepareStatement(query);
 			statement.setInt(1, professorId);		
 			statement.executeUpdate();
+			
+			System.out.println("Deleted from the Professor table.");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

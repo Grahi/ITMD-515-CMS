@@ -49,6 +49,11 @@
 					 	<c:param name="profId" value="${prof.profId}"/> 
 					 	<c:param name="command" value="LOADPROFESSOR"/> 
 					 </c:url>
+					 <c:url var="deletelink" value="AdminServlet">
+					 	<c:param name="profId" value="${prof.profId}"/> 
+					 	<c:param name="command" value="DELETEPROFESSOR"/> 
+					 </c:url>
+					 
 						<tr>					
 							<td class="text-left">${prof.profFirstName} </td>
 							<td class="text-left">${prof.profLastName} </td>
@@ -56,8 +61,11 @@
 							<td class="text-left">${prof.profEmail} </td>	
 							<td class="text-left">
 							<form action="">								
-							    <a href="${templink }" title="Click to update professor details."><i class="fa fa-pencil-square-o"></i></a>
-								 <a href="${templink }" title="Click to delete professor."><i class="fa fa-trash-o"></i></a>
+							    <a href="${templink}" title="Click to update professor details."><i class="fa fa-pencil-square-o"></i></a> 
+							    |
+								 <a href="${deletelink}" title="Click to delete professor."
+								 onclick="if(!(confirm('Are you sure you want to delete this professo? All the courses registered and user profile will also be delete.'))) return false"
+								 ><i class="fa fa-trash-o"></i></a>
 							</form></td>			
 							</tr>
 					</c:forEach>	
@@ -88,6 +96,10 @@
 						<c:url var="templink" value="AdminServlet">
 						 	<c:param name="studentId" value="${stud.studentId}"/> 
 						 	<c:param name="command" value="LOADSTUDENT"/> 
+					 	</c:url>	
+					 	<c:url var="deletelink" value="AdminServlet">
+						 	<c:param name="studentId" value="${stud.studentId}"/> 
+						 	<c:param name="command" value="DELETESTUDENT"/> 
 					 	</c:url>					 
 						<tr>					
 							<td class="text-left">${stud.studentFirstName} </td>
@@ -96,8 +108,11 @@
 							<td class="text-left">${stud.studentEmail} </td>	
 							<td class="text-left">
 							<form action="">								
-							    <a href="${templink }" title="Click to update student details."><i class="fa fa-pencil-square-o"></i></a>
-								<a href="${templink }" title="Click to delete student."><i class="fa fa-trash-o"></i></a>
+							    <a href="${templink}" title="Click to update student details."><i class="fa fa-pencil-square-o"></i></a>
+							    |
+								<a href="${deletelink}" title="Click to delete student."
+								onclick="if(!(confirm('Are you sure you want to delete this student? All the courses registered and user profile will also be delete.'))) return false"
+								><i class="fa fa-trash-o"></i></a>
 							</form></td>			
 						</tr>
 					</c:forEach>	
@@ -128,6 +143,10 @@
 						<c:url var="templink" value="AdminServlet">
 						 	 <c:param name="courseId" value="${course.courseId}"/> 
 						 	<c:param name="command" value="LOADCOURSE"/> 
+					 	</c:url>	
+					 	<c:url var="deletelink" value="AdminServlet">
+						 	 <c:param name="courseId" value="${course.courseId}"/> 
+						 	<c:param name="command" value="DELETECOURSE"/> 
 					 	</c:url>						
 						<tr>					
 							<td class="text-left">${course.courseCode} </td>
@@ -135,8 +154,11 @@
 							<td class="text-left">${course.location} </td>	
 							<td class="text-left">
 							<form action="">								
-								<a href="${templink }" title="Click to update course details."><i class="fa fa-pencil-square-o"></i></a>
-								<a href="${templink }" title="Click to delete course."><i class="fa fa-trash-o"></i></a>
+								<a href="${templink}" title="Click to update course details."><i class="fa fa-pencil-square-o"></i></a>
+								|
+								<a href="${deletelink}" title="Click to delete course."
+								onclick="if(!(confirm('Are you sure you want to delete this course? The course will be automatically removed for professor and student.'))) return false"
+								><i class="fa fa-trash-o"></i></a>
 							</form></td>			
 							</tr>
 					</c:forEach>	

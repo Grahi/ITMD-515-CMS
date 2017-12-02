@@ -83,7 +83,41 @@ public class CourseDaoImpl implements CourseDao{
 
 	@Override
 	public void deleteCourse(int courseId) {
-		
+		Connection con = null;
+		PreparedStatement statement = null;		
+		String query = "";	
+			
+		try {
+
+			con = DBConnection.createConnection();
+			
+			//first delete the user of the professor
+			query = "DELETE FROM `cms`.`professor_course` "
+					+"WHERE course_id = ?";
+
+			statement = con.prepareStatement(query);
+			statement.setInt(1, courseId);		
+			statement.executeUpdate();
+				
+			//first delete the courses taken by the student and then the student.
+			query = "DELETE FROM `cms`.`student_course` "
+						+"WHERE course_id = ?";
+
+			statement = con.prepareStatement(query);
+			statement.setInt(1, courseId);		
+			statement.executeUpdate();
+			
+			//delete the student
+			query = "DELETE FROM `cms`.`course` "
+					+"WHERE course_id = ?";
+
+			statement = con.prepareStatement(query);
+			statement.setInt(1, courseId);		
+			statement.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 

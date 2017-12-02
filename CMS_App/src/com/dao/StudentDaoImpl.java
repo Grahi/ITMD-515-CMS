@@ -127,8 +127,16 @@ public class StudentDaoImpl implements StudentDao {
 
 			con = DBConnection.createConnection();
 			
+			//first delete the user of the professor
+			query = "DELETE FROM `cms`.`users` WHERE role = \"Student\" "
+					+"AND roleId = ?";
+
+			statement = con.prepareStatement(query);
+			statement.setInt(1, studentId);		
+			statement.executeUpdate();
+				
 			//first delete the courses taken by the student and then the student.
-			query = "DELETE FROM student_course "
+			query = "DELETE FROM `cms`.`student_course` "
 						+"WHERE student_id = ?";
 
 			statement = con.prepareStatement(query);
@@ -136,12 +144,13 @@ public class StudentDaoImpl implements StudentDao {
 			statement.executeUpdate();
 			
 			//delete the student
-			query = "DELETE FROM student "
+			query = "DELETE FROM `cms`.`student` "
 					+"WHERE student_id = ?";
 
 			statement = con.prepareStatement(query);
 			statement.setInt(1, studentId);		
 			statement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
