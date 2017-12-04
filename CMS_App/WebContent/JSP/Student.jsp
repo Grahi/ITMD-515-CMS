@@ -19,11 +19,14 @@
 
 	<div id="main">
 		<ul id="topnav">
-			<li><a href="<%=request.getContextPath()%>/StudentServlet">
-			<i	class="material-icons">home</i></a></li>
+			<li>
+				<a href="<%=request.getContextPath()%>/<%=session.getAttribute("roleName")%>Servlet">
+				<i	class="material-icons">home</i></a>
+			</li>
 			<li style="float: right">
-			<a href="<%=request.getContextPath()%>/LogoutServlet">Logout
-				<i	class="material-icons">login</i></a></li>
+				<a href="<%=request.getContextPath()%>/LogoutServlet">Logout
+				<i	class="material-icons">login</i></a>
+			</li>
 		</ul>
 
 		<div class="w3-container w3-card-4" style="font-size: 15px">

@@ -1,60 +1,93 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<jsp:useBean id="ScheduleBeanId" class="com.bean.Schedule" scope="session"></jsp:useBean>
-<jsp:setProperty name="ScheduleBeanId" property="*" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page language="java" import="java.util.*"%>
 
 
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>List of Resources</title>
-
-<link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
-
-<style>
-div {
-    border: 1px solid powderblue;
-   
-}
-</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="<%=request.getContextPath()%>/JSP/css/TopMenu2.css" rel="stylesheet" type="text/css">
+	<link href="<%=request.getContextPath()%>/JSP/css/SideNav.css" rel="stylesheet" type="text/css">
+	<link href="<%=request.getContextPath()%>/JSP/css/TableStyle.css" 	rel="stylesheet" type="text/css">
+	<title>Schedule Details</title>
 </head>
+
+</head>
+
 <body>
+<div id="mySidenav" class="sidenav">
+		<a href="#" class="closebtn" onclick="closeNav()">&times;</a> 
+		<a href="<%=request.getContextPath()%>/TAServlet">Teaching Assistant </a>
+		<a href="<%=request.getContextPath()%>/ResourceServlet">Course Resources</a> 
+		<a href="<%=request.getContextPath()%>/ScheduleServlet">Schedule</a>
+		<a href="<%=request.getContextPath()%>/AssignmentServlet">Assignments</a>
+	</div>
 
-	<form method="post" >
-		<br /> <br /> <br />
-		<h1>
-			Schedule for:
-			<%=request.getAttribute("courseName")%></h1>
-		<br /> 
+	<div id="main">
+		<ul id="topnav">
+			<li>
+				<a href="<%=request.getContextPath()%>/<%=session.getAttribute("roleName")%>Servlet">
+				<i	class="material-icons">home</i></a>
+			</li>
+			<li style="float: right">
+				<a href="<%=request.getContextPath()%>/LogoutServlet">Logout
+				<i	class="material-icons">login</i></a>
+			</li>
+		</ul>
+	
+		<div class="w3-container w3-card-4" style="font-size: 15px">
+			<h5 style="float: right; font-size: 15px">
+				<%=session.getAttribute("userName")%></h5>
+			
+			<h5 style="font-size: 15px">
+				<input name="panelbtn" onclick="openNav()" type="button"
+					value="&#9776;" /> Course : <%=session.getAttribute("courseName")%>
+			</h5>
+			
+		</div>
 		
-		<table  bgcolor=white border="2">
-			<tr>
-				<th>TITLE</th>
-				<th>DATE ASSIGNED</th>
-				<th>DATE DUE</th>
-				<th>LOCATION</th>
-				
-			</tr>
-			<%
-				String title = ScheduleBeanId.getScheduleTitle();
-				String date_assigned = ScheduleBeanId.getStartTime().toString();
-				String date_due = ScheduleBeanId.getEndTime().toString();
-				String location = ScheduleBeanId.getLocation();				
-			%>
-
-			<tr>
-				<td>Textbook</td>
-				<td>JEE</td>				
-			</tr>
-
-			<tr>
-				<td>Textbook</td>
-				<td>Python, Author: </td>				
-			</tr>
+		<div class="table-title">
+			<h3 align=center>Course Schedule</h3>
+		</div>
+		<table class="table-fill">
+			<thead>
+				<tr>
+					<th class="text-left">Schedule Title</th>
+					<th class="text-left">Room Name</th>
+					<th class="text-left">Start Time</th>
+					<th class="text-left">End Time</th>
+				</tr>
+			</thead>
+			<tbody class="table-hover">
+				<c:forEach var="sch" items="${schList}">
+					<tr>					
+						<td class="text-left">${sch.scheduleTitle} </td>
+						<td class="text-left">${sch.room_name} </td>
+						<td class="text-left">${sch.startTime} </td>
+						<td class="text-left">${sch.endTime} </td>				
+					</tr>
+				</c:forEach>				
+			</tbody>
 		</table>
+</div>
+<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "200px";
+			document.getElementById("main").style.marginLeft = "200px";
+		}
 
-	</form>
-
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft = "0";
+		}
+	</script>
 </body>
+
+
+
 </html>

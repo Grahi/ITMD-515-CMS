@@ -7,11 +7,25 @@ public class Schedule {
 	int scheduleId;
 	String scheduleTitle;
 	int roomId;
+	String room_name;
 	int courseId;
 	String location;
 	Date startTime;
 	Date endTime;
 	Date dateCreated;
+	
+	
+	
+	public Schedule(int scheduleId, String scheduleTitle, int roomId, int courseId,String room_name, Date startTime,
+			Date endTime) {		
+		this.scheduleId = scheduleId;
+		this.scheduleTitle = scheduleTitle;
+		this.roomId = roomId;
+		this.room_name = room_name;
+		this.courseId = courseId;		
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
 	
 	public int getScheduleId() {
 		return scheduleId;
@@ -31,6 +45,15 @@ public class Schedule {
 	public void setRoomId(int roomId) {
 		this.roomId = roomId;
 	}
+	
+	public String getRoom_name() {
+		return room_name;
+	}
+
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
+	}
+
 	public int getCourseId() {
 		return courseId;
 	}
@@ -61,14 +84,13 @@ public class Schedule {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Schedule [scheduleId=" + scheduleId + ", scheduleTitle=" + scheduleTitle + ", roomId=" + roomId
-				+ ", courseId=" + courseId + ", location=" + location + ", startTime=" + startTime + ", endTime="
-				+ endTime + ", dateCreated=" + dateCreated + "]";
+				+ ", room_name=" + room_name + ", courseId=" + courseId + ", location=" + location + ", startTime="
+				+ startTime + ", endTime=" + endTime + ", dateCreated=" + dateCreated + "]";
 	}
-	
 	
 	
 }

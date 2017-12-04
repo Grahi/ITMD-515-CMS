@@ -81,7 +81,7 @@ public class CourseServlet extends HttpServlet {
 			if(!assmtList.isEmpty()){
 				assName = assmtList.get(0).getAssignmentText();
 			}else{
-				taName = "No assignments.";
+				assName = "No assignments.";
 			}		
 			
 			System.out.println("Got the course:"+courseName);			

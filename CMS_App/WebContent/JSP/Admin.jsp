@@ -18,10 +18,14 @@
 <body>
 
 <ul id="topnav">
-					
-		<li style="float: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout 
-		<i class="material-icons">login</i></a>
-		</li>
+		<li>
+				<a href="<%=request.getContextPath()%>/<%=session.getAttribute("roleName")%>Servlet">
+				<i	class="material-icons">home</i></a>
+			</li>
+			<li style="float: right">
+				<a href="<%=request.getContextPath()%>/LogoutServlet">Logout
+				<i	class="material-icons">login</i></a>
+			</li>
 </ul>
 <div class="w3-container w3-card-4" style="font-size: 15px">
 	<h5 style="float: right; font-size: 15px"><%=session.getAttribute("userName")%></h5>
@@ -61,8 +65,8 @@
 							<td class="text-left">${prof.profEmail} </td>	
 							<td class="text-left">
 							<form action="">								
-							    <a href="${templink}" title="Click to update professor details."><i class="fa fa-pencil-square-o"></i></a> 
-							    |
+							    <a href="${templink}" title="Click to update professor details."><i class="fa fa-pencil-square-o"></i></a> | 
+							    <a href="${templink}" title="Click to add professor as an user of this app."><i class="fa fa-user-o"></i></a> |
 								 <a href="${deletelink}" title="Click to delete professor."
 								 onclick="if(!(confirm('Are you sure you want to delete this professo? All the courses registered and user profile will also be delete.'))) return false"
 								 ><i class="fa fa-trash-o"></i></a>
@@ -108,8 +112,8 @@
 							<td class="text-left">${stud.studentEmail} </td>	
 							<td class="text-left">
 							<form action="">								
-							    <a href="${templink}" title="Click to update student details."><i class="fa fa-pencil-square-o"></i></a>
-							    |
+							    <a href="${templink}" title="Click to update student details."><i class="fa fa-pencil-square-o"></i></a> |
+							    <a href="${templink}" title="Click to add student as an user of this app."><i class="fa fa-user-o"></i></a> |
 								<a href="${deletelink}" title="Click to delete student."
 								onclick="if(!(confirm('Are you sure you want to delete this student? All the courses registered and user profile will also be delete.'))) return false"
 								><i class="fa fa-trash-o"></i></a>

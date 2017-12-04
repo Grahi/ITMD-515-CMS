@@ -43,6 +43,7 @@ public class LoginServlet extends HttpServlet {
 					
 				//pass the roleId to the request
 				session.setAttribute("roleId", userValidate.getRoleId());
+				session.setAttribute("roleName", userValidate.getRole());
 				
 				if (userValidate.getRole().equals("Admin")) {
 
