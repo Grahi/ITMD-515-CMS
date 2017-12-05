@@ -14,7 +14,7 @@
 	<link href="<%=request.getContextPath()%>/JSP/css/TopMenu2.css" rel="stylesheet" type="text/css">
 	<link href="<%=request.getContextPath()%>/JSP/css/SideNav.css" rel="stylesheet" type="text/css">
 	<link href="<%=request.getContextPath()%>/JSP/css/TableStyle.css" 	rel="stylesheet" type="text/css">
-	<title>TA Details</title>
+	<title>Assignments</title>
 </head>
 
 </head>
@@ -52,7 +52,7 @@
 		</div>
 		
 		<div class="table-title">
-			<h3 align=center>Teaching Assistants</h3>
+			<h3 align=center>Assignments</h3>
 		</div>
 		<table class="table-fill">
 			<thead>
