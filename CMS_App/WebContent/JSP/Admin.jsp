@@ -53,6 +53,10 @@
 					 	<c:param name="profId" value="${prof.profId}"/> 
 					 	<c:param name="command" value="LOADPROFESSOR"/> 
 					 </c:url>
+					 <c:url var="userlink" value="AdminServlet">
+					 	<c:param name="profId" value="${prof.profId}"/> 
+					 	<c:param name="command" value="LOADUSERPROFESSOR"/> 
+					 </c:url>
 					 <c:url var="deletelink" value="AdminServlet">
 					 	<c:param name="profId" value="${prof.profId}"/> 
 					 	<c:param name="command" value="DELETEPROFESSOR"/> 
@@ -66,7 +70,7 @@
 							<td class="text-left">
 							<form action="">								
 							    <a href="${templink}" title="Click to update professor details."><i class="fa fa-pencil-square-o"></i></a> | 
-							    <a href="${templink}" title="Click to add professor as an user of this app."><i class="fa fa-user-o"></i></a> |
+							    <a href="${userlink}" title="Click to add professor as an user of this app."><i class="fa fa-user-o"></i></a> |
 								 <a href="${deletelink}" title="Click to delete professor."
 								 onclick="if(!(confirm('Are you sure you want to delete this professo? All the courses registered and user profile will also be delete.'))) return false"
 								 ><i class="fa fa-trash-o"></i></a>
@@ -101,6 +105,10 @@
 						 	<c:param name="studentId" value="${stud.studentId}"/> 
 						 	<c:param name="command" value="LOADSTUDENT"/> 
 					 	</c:url>	
+					 	<c:url var="userlink" value="AdminServlet">
+						 	<c:param name="studentId" value="${stud.studentId}"/> 
+						 	<c:param name="command" value="LOADUSERSTUDENT"/> 
+					 	</c:url>			
 					 	<c:url var="deletelink" value="AdminServlet">
 						 	<c:param name="studentId" value="${stud.studentId}"/> 
 						 	<c:param name="command" value="DELETESTUDENT"/> 
@@ -113,7 +121,7 @@
 							<td class="text-left">
 							<form action="">								
 							    <a href="${templink}" title="Click to update student details."><i class="fa fa-pencil-square-o"></i></a> |
-							    <a href="${templink}" title="Click to add student as an user of this app."><i class="fa fa-user-o"></i></a> |
+							    <a href="${userlink}" title="Click to add student as an user of this app."><i class="fa fa-user-o"></i></a> |
 								<a href="${deletelink}" title="Click to delete student."
 								onclick="if(!(confirm('Are you sure you want to delete this student? All the courses registered and user profile will also be delete.'))) return false"
 								><i class="fa fa-trash-o"></i></a>
@@ -147,7 +155,7 @@
 						<c:url var="templink" value="AdminServlet">
 						 	 <c:param name="courseId" value="${course.courseId}"/> 
 						 	<c:param name="command" value="LOADCOURSE"/> 
-					 	</c:url>	
+					 	</c:url>							
 					 	<c:url var="deletelink" value="AdminServlet">
 						 	 <c:param name="courseId" value="${course.courseId}"/> 
 						 	<c:param name="command" value="DELETECOURSE"/> 

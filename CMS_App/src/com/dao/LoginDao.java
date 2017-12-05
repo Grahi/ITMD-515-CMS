@@ -6,4 +6,6 @@ public interface LoginDao {
 	
 	public Login authenticateUser(Login loginBean);
 	
+	public int addUser(Login newUser);
+	
 }
